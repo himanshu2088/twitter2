@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ThoughtDelegate {
     
     //Outlets
     @IBOutlet weak var segmentController: UISegmentedControl!
@@ -45,6 +45,28 @@ class MainVC: UIViewController {
         if thoughtsListener != nil {
             thoughtsListener.remove()
         }
+    }
+    
+    func thoughtOptionsTapped(thought: Thought) {
+        let alert = UIAlertController(title: "Edit Thought", message: "You can edit or delete Thought", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete Thought", style: .default) { (action) in
+            Firestore.firestore().collection(THOUGHTS_REF).document(thought.documentId).delete(completion: { (error) in
+                if let error = error {
+                    debugPrint("Error while deleting thought \(error.localizedDescription)")
+                } else {
+                    return
+                }
+            })
+        }
+        let editAction = UIAlertAction(title: "Edit Thought", style: .default) { (action) in
+            self.performSegue(withIdentifier: "toUpdateThoughtVC", sender: thought)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(editAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
     func setListener() {
@@ -100,13 +122,9 @@ class MainVC: UIViewController {
         }
     }
     
-}
-
-extension MainVC: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "thoughtCell", for: indexPath) as? ThoughtCell else { return UITableViewCell()}
-        cell.configureCell(thought: thoughtsArray[indexPath.row])
+        cell.configureCell(thought: thoughtsArray[indexPath.row], delegate: self)
         return cell
     }
     
@@ -125,7 +143,17 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                     destinationVC.thought = thought
                 }
             }
+        } else if segue.identifier == "toUpdateThoughtVC" {
+            if let destinationVC = segue.destination as? UpdateThoughtVC {
+                if let thoughtData = sender as? (Thought) {
+                    destinationVC.thoughtData = thoughtData
+                }
+            }
         }
     }
     
 }
+
+
+
+    

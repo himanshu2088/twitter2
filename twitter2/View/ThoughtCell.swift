@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol ThoughtDelegate {
+    func thoughtOptionsTapped(thought: Thought)
+}
+
 class ThoughtCell: UITableViewCell {
 
     //Outlets
@@ -22,6 +26,7 @@ class ThoughtCell: UITableViewCell {
     
     //Variables
     private var thought: Thought!
+    private var delegate: ThoughtDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,29 +39,31 @@ class ThoughtCell: UITableViewCell {
         Firestore.firestore().collection(THOUGHTS_REF).document(thought.documentId).updateData([NUM_LIKES : thought.numLikes + 1])
     }
 
-    func configureCell(thought: Thought) {
+    func configureCell(thought: Thought, delegate: ThoughtDelegate?) {
         optionsMenu.isHidden = true
         self.thought = thought
+        self.delegate = delegate
         usernameLbl.text = thought.username
         thoughtTxtLbl.text = thought.thoughtTxt
         numLikesLbl.text = String(thought.numLikes)
         numCommentsLbl.text = String(thought.numComments)
-        
+
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, hh:mm"
         let timestamp = formatter.string(from: thought.timestamp)
         timestampLbl.text = timestamp
-        
+
         if thought.userId == Auth.auth().currentUser?.uid {
+            
             optionsMenu.isHidden = false
             optionsMenu.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: #selector(optionsMenuTapped))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(thoughtOptionsTapped))
             optionsMenu.addGestureRecognizer(tap)
         }
     }
     
-    @objc func optionsMenuTapped() {
-        // send that thought to the mainVC to delete or edit that thought using protocols and delegates.
+    @objc func thoughtOptionsTapped() {
+        delegate?.thoughtOptionsTapped(thought: thought)
     }
     
 }

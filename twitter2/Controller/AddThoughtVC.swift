@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AVFoundation
 
 class AddThoughtVC: UIViewController, UITextViewDelegate {
     
@@ -18,6 +19,13 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
     //Variables
     private var selectedCategory = thoughtCategory.funny.rawValue
     private var username = Auth.auth().currentUser?.displayName
+    private var userId = Auth.auth().currentUser?.uid
+    
+    var captureSession: AVCaptureSession!
+    var cameraOutput: AVCapturePhotoOutput!
+    var previewLayer: AVCaptureVideoPreviewLayer!
+    
+    var photoData: Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +64,8 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
                 NUM_LIKES : 0,
                 THOUGHT_TXT : thoughtTxtView.text!,
                 TIMESTAMP : FieldValue.serverTimestamp(),
-                USERNAME : username
+                USERNAME : username,
+                USER_ID : userId
             ]) { (error) in
                 if let error = error {
                     debugPrint("Error adding document, \(error.localizedDescription)")
@@ -67,4 +76,11 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
             }
         }
     }
+    
+    @IBAction func addPhotoBtnPressed(_ sender: UIButton) {
+        
+        
+        
+    }
+    
 }

@@ -25,6 +25,13 @@ class CreateUserVC: UIViewController {
     @IBAction func createUserBtnPressed(_ sender: UIButton) {
         
         guard let email = emailTxtField.text, let password = passwordTxtField.text, let username = usernameTxtField.text else { return }
+        if email == "" || password == "" || username == "" {
+            let alert = UIAlertController(title: "Error", message: "Please enter all the fields to continue.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            return
+        }
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 debugPrint("Error while creating user, \(error.localizedDescription)")

@@ -19,6 +19,8 @@
 		20695A3422B7E1DD00D63948 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20695A3322B7E1DD00D63948 /* Thought.swift */; };
 		206AD68122CB89B6007CC85F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206AD68022CB89B6007CC85F /* LoginVC.swift */; };
 		206AD68322CB8A42007CC85F /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206AD68222CB8A42007CC85F /* CreateUserVC.swift */; };
+		2099A5EA22E4513000617E51 /* UpdateCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2099A5E922E4513000617E51 /* UpdateCommentVC.swift */; };
+		2099A5EC22E45B6B00617E51 /* UpdateThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2099A5EB22E45B6B00617E51 /* UpdateThoughtVC.swift */; };
 		20A3D95C22BA9EA0003FE4EE /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3D95B22BA9EA0003FE4EE /* CommentsVC.swift */; };
 		20A3D95E22BAA260003FE4EE /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3D95D22BAA260003FE4EE /* CommentCell.swift */; };
 		20A3D96022BAA2EA003FE4EE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3D95F22BAA2EA003FE4EE /* Comment.swift */; };
@@ -42,6 +44,8 @@
 		20695A3322B7E1DD00D63948 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		206AD68022CB89B6007CC85F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		206AD68222CB8A42007CC85F /* CreateUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserVC.swift; sourceTree = "<group>"; };
+		2099A5E922E4513000617E51 /* UpdateCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCommentVC.swift; sourceTree = "<group>"; };
+		2099A5EB22E45B6B00617E51 /* UpdateThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateThoughtVC.swift; sourceTree = "<group>"; };
 		20A3D95B22BA9EA0003FE4EE /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		20A3D95D22BAA260003FE4EE /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		20A3D95F22BAA2EA003FE4EE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -122,7 +126,9 @@
 			children = (
 				205F2EB322B634D200DEFB02 /* MainVC.swift */,
 				205F2EC822B6832D00DEFB02 /* AddThoughtVC.swift */,
+				2099A5EB22E45B6B00617E51 /* UpdateThoughtVC.swift */,
 				20A3D95B22BA9EA0003FE4EE /* CommentsVC.swift */,
+				2099A5E922E4513000617E51 /* UpdateCommentVC.swift */,
 				206AD68022CB89B6007CC85F /* LoginVC.swift */,
 				206AD68222CB8A42007CC85F /* CreateUserVC.swift */,
 			);
@@ -284,10 +290,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				205F2EC922B6832D00DEFB02 /* AddThoughtVC.swift in Sources */,
+				2099A5EA22E4513000617E51 /* UpdateCommentVC.swift in Sources */,
 				205F2EB422B634D200DEFB02 /* MainVC.swift in Sources */,
 				206AD68122CB89B6007CC85F /* LoginVC.swift in Sources */,
 				205F2EB222B634D200DEFB02 /* AppDelegate.swift in Sources */,
 				20695A3222B7DDD300D63948 /* ThoughtCell.swift in Sources */,
+				2099A5EC22E45B6B00617E51 /* UpdateThoughtVC.swift in Sources */,
 				20695A3022B7D84700D63948 /* Enum.swift in Sources */,
 				20A3D95E22BAA260003FE4EE /* CommentCell.swift in Sources */,
 				20695A3422B7E1DD00D63948 /* Thought.swift in Sources */,
