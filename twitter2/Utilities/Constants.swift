@@ -18,6 +18,11 @@ let NUM_LIKES = "numLikes"
 let THOUGHT_TXT = "thoughtTxt"
 let COMMENT_TXT = "commentTxt"
 let TIMESTAMP = "timestamp"
-let USERNAME = "username"
+
 let USER_ID = "userId"
+
 let DATE_CREATED = "dateCreated"
+let USERNAME = "username"
+let CURRENT_PASSWORD = "currentPassword"
+let OLD_PASSWORD = "oldPassword"
+let CURRENT_EMAIL = "currentEmail"

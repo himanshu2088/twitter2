@@ -8,9 +8,53 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class CommentsVC: UIViewController, CommentDelegate {
+    
+    var thought: Thought!
+    var username: String!
+    var commentListener: ListenerRegistration!
+    var commentsArray = [Comment]()
+    var thoughtRef: DocumentReference!
+    let firestore = Firestore.firestore()
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addCommentTxt: UITextField!
+    @IBOutlet weak var keyboardView: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        thoughtRef = firestore.collection(THOUGHTS_REF).document(thought.documentId)
+        if let name = Auth.auth().currentUser?.displayName {
+            username = name
+        }
+        self.view.bindToKeyboard()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        commentListener = firestore.collection(THOUGHTS_REF).document(self.thought.documentId).collection(COMMENTS_REF)
+            .order(by: TIMESTAMP, descending: true)
+            .addSnapshotListener({ (snapshot, error) in
+                guard let snapshot = snapshot else {
+                    debugPrint("Error fetching comments \(error?.localizedDescription)")
+                    return
+                }
+                
+                self.commentsArray.removeAll()
+                self.commentsArray = Comment.parseData(snapshot: snapshot)
+                self.tableView.reloadData()
+                
+            })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        commentListener.remove()
+    }
+    
     func commentOptionsTapped(comment: Comment) {
         let alert = UIAlertController(title: "Edit Comment", message: "You can edit or delete Comment", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete Comment", style: .default) { (action) in
@@ -65,54 +109,14 @@ class CommentsVC: UIViewController, CommentDelegate {
         }
     }
     
-    var thought: Thought!
-    var username: String!
-    var commentListener: ListenerRegistration!
-    var commentsArray = [Comment]()
-    var thoughtRef: DocumentReference!
-    let firestore = Firestore.firestore()
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addCommentTxt: UITextField!
-    @IBOutlet weak var keyboardView: UIView!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        thoughtRef = firestore.collection(THOUGHTS_REF).document(thought.documentId)
-        if let name = Auth.auth().currentUser?.displayName {
-            username = name
-        }
-        self.view.bindToKeyboard()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        commentListener = firestore.collection(THOUGHTS_REF).document(self.thought.documentId).collection(COMMENTS_REF)
-            .order(by: TIMESTAMP, descending: true)
-            .addSnapshotListener({ (snapshot, error) in
-                guard let snapshot = snapshot else {
-                    debugPrint("Error fetching comments \(error?.localizedDescription)")
-                    return
-                }
-                
-                self.commentsArray.removeAll()
-                self.commentsArray = Comment.parseData(snapshot: snapshot)
-                self.tableView.reloadData()
-                
-            })
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        commentListener.remove()
-    }
-    
     @IBAction func sendBtnTapped(_ sender: UIButton) {
+        
+        SVProgressHUD.show()
         
         guard let commentTxt = addCommentTxt.text else { return }
         
         if commentTxt == "" {
+            SVProgressHUD.dismiss()
             let alert = UIAlertController(title: "Error", message: "Please write something to add comment.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
@@ -150,11 +154,22 @@ class CommentsVC: UIViewController, CommentDelegate {
             if let error = error {
                 debugPrint("Transaction failed, \(error.localizedDescription)")
             } else {
+                SVProgressHUD.dismiss()
                 self.addCommentTxt.text = ""
                 self.addCommentTxt.resignFirstResponder()
             }
         }
         
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(disissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func disissKeyboard() {
+        view.endEditing(true)
     }
     
 }

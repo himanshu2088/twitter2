@@ -8,35 +8,24 @@
 
 import UIKit
 import Firebase
-import AVFoundation
+import SVProgressHUD
 
-class AddThoughtVC: UIViewController, UITextViewDelegate {
+class AddThoughtVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     //Outlets
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var thoughtTxtView: UITextView!
+    @IBOutlet weak var thoughtTextField: UITextField!
+    @IBOutlet weak var keyboardView: UIView!
     
     //Variables
     private var selectedCategory = thoughtCategory.funny.rawValue
     private var username = Auth.auth().currentUser?.displayName
     private var userId = Auth.auth().currentUser?.uid
     
-    var captureSession: AVCaptureSession!
-    var cameraOutput: AVCapturePhotoOutput!
-    var previewLayer: AVCaptureVideoPreviewLayer!
-    
-    var photoData: Data?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        thoughtTxtView.text = "My random thought..."
-        thoughtTxtView.textColor = UIColor.lightGray
-        thoughtTxtView.delegate = self
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        thoughtTxtView.text = ""
-        thoughtTxtView.textColor = UIColor.darkGray
+        self.view.bindToKeyboard()
+        self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func segmentController(_ sender: UISegmentedControl) {
@@ -51,7 +40,11 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func postBtnPressed(_ sender: UIButton) {
-        if thoughtTxtView.text == "My random thought..." || thoughtTxtView.text == "" {
+        
+        SVProgressHUD.show()
+        
+        if thoughtTextField.text == "Add thought..." || thoughtTextField.text == "" {
+            SVProgressHUD.dismiss()
             let alert = UIAlertController(title: "Error", message: "Please write something to post your thought.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
@@ -62,7 +55,7 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
                 CATEGORY : selectedCategory,
                 NUM_COMMENTS : 0,
                 NUM_LIKES : 0,
-                THOUGHT_TXT : thoughtTxtView.text!,
+                THOUGHT_TXT : thoughtTextField.text!,
                 TIMESTAMP : FieldValue.serverTimestamp(),
                 USERNAME : username,
                 USER_ID : userId
@@ -70,17 +63,22 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
                 if let error = error {
                     debugPrint("Error adding document, \(error.localizedDescription)")
                 } else {
+                    SVProgressHUD.dismiss()
                     self.navigationController?.popViewController(animated: true)
                     print("Successfully created Thought")
                 }
             }
+            }
         }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(disissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
-    @IBAction func addPhotoBtnPressed(_ sender: UIButton) {
-        
-        
-        
+    @objc func disissKeyboard() {
+        view.endEditing(true)
     }
-    
+        
 }

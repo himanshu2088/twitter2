@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		2000523A22B92C4C0019669A /* BoundKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2000523922B92C4C0019669A /* BoundKeyboard.swift */; };
+		204040E622F204840058BD48 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204040E522F204840058BD48 /* ChangePasswordVC.swift */; };
 		205F2EB222B634D200DEFB02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F2EB122B634D200DEFB02 /* AppDelegate.swift */; };
 		205F2EB422B634D200DEFB02 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F2EB322B634D200DEFB02 /* MainVC.swift */; };
 		205F2EB722B634D200DEFB02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 205F2EB522B634D200DEFB02 /* Main.storyboard */; };
 		205F2EB922B634D300DEFB02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 205F2EB822B634D300DEFB02 /* Assets.xcassets */; };
 		205F2EBC22B634D300DEFB02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 205F2EBA22B634D300DEFB02 /* LaunchScreen.storyboard */; };
 		205F2EC922B6832D00DEFB02 /* AddThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F2EC822B6832D00DEFB02 /* AddThoughtVC.swift */; };
+		206281E322FC829D005E9EF6 /* ForgetPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206281E222FC829D005E9EF6 /* ForgetPassVC.swift */; };
 		20695A3022B7D84700D63948 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20695A2F22B7D84700D63948 /* Enum.swift */; };
 		20695A3222B7DDD300D63948 /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20695A3122B7DDD300D63948 /* ThoughtCell.swift */; };
 		20695A3422B7E1DD00D63948 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20695A3322B7E1DD00D63948 /* Thought.swift */; };
-		206AD68122CB89B6007CC85F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206AD68022CB89B6007CC85F /* LoginVC.swift */; };
 		206AD68322CB8A42007CC85F /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206AD68222CB8A42007CC85F /* CreateUserVC.swift */; };
 		2099A5EA22E4513000617E51 /* UpdateCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2099A5E922E4513000617E51 /* UpdateCommentVC.swift */; };
 		2099A5EC22E45B6B00617E51 /* UpdateThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2099A5EB22E45B6B00617E51 /* UpdateThoughtVC.swift */; };
 		20A3D95C22BA9EA0003FE4EE /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3D95B22BA9EA0003FE4EE /* CommentsVC.swift */; };
 		20A3D95E22BAA260003FE4EE /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3D95D22BAA260003FE4EE /* CommentCell.swift */; };
 		20A3D96022BAA2EA003FE4EE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3D95F22BAA2EA003FE4EE /* Comment.swift */; };
+		20C9F41122EE097D007CF382 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206AD68022CB89B6007CC85F /* LoginVC.swift */; };
 		20F60D9322B7D328006C57FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F60D9222B7D328006C57FC /* GoogleService-Info.plist */; };
 		20F60D9522B7D4A6006C57FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F60D9422B7D4A6006C57FC /* Constants.swift */; };
 		F5D24703919311B3D3AA33FD /* Pods_twitter2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D826D9EE934578087FD54C1 /* Pods_twitter2.framework */; };
@@ -31,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		2000523922B92C4C0019669A /* BoundKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundKeyboard.swift; sourceTree = "<group>"; };
+		204040E522F204840058BD48 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		205F2EAE22B634D200DEFB02 /* twitter2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		205F2EB122B634D200DEFB02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		205F2EB322B634D200DEFB02 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -39,10 +42,11 @@
 		205F2EBB22B634D300DEFB02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		205F2EBD22B634D300DEFB02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		205F2EC822B6832D00DEFB02 /* AddThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtVC.swift; sourceTree = "<group>"; };
+		206281E222FC829D005E9EF6 /* ForgetPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassVC.swift; sourceTree = "<group>"; };
 		20695A2F22B7D84700D63948 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		20695A3122B7DDD300D63948 /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 		20695A3322B7E1DD00D63948 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
-		206AD68022CB89B6007CC85F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		206AD68022CB89B6007CC85F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; tabWidth = 4; };
 		206AD68222CB8A42007CC85F /* CreateUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserVC.swift; sourceTree = "<group>"; };
 		2099A5E922E4513000617E51 /* UpdateCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCommentVC.swift; sourceTree = "<group>"; };
 		2099A5EB22E45B6B00617E51 /* UpdateThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateThoughtVC.swift; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				2099A5E922E4513000617E51 /* UpdateCommentVC.swift */,
 				206AD68022CB89B6007CC85F /* LoginVC.swift */,
 				206AD68222CB8A42007CC85F /* CreateUserVC.swift */,
+				204040E522F204840058BD48 /* ChangePasswordVC.swift */,
+				206281E222FC829D005E9EF6 /* ForgetPassVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -174,6 +180,7 @@
 				205F2EAB22B634D200DEFB02 /* Frameworks */,
 				205F2EAC22B634D200DEFB02 /* Resources */,
 				CB670EFA859FD334202D107D /* [CP] Embed Pods Frameworks */,
+				9FBD60CB2031F75399D3C87F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,6 +239,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9FBD60CB2031F75399D3C87F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-twitter2/Pods-twitter2-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-twitter2/Pods-twitter2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B47E2B55976FBE5AEC6F2B02 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,9 +283,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-twitter2/Pods-twitter2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -269,9 +299,14 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -292,7 +327,7 @@
 				205F2EC922B6832D00DEFB02 /* AddThoughtVC.swift in Sources */,
 				2099A5EA22E4513000617E51 /* UpdateCommentVC.swift in Sources */,
 				205F2EB422B634D200DEFB02 /* MainVC.swift in Sources */,
-				206AD68122CB89B6007CC85F /* LoginVC.swift in Sources */,
+				204040E622F204840058BD48 /* ChangePasswordVC.swift in Sources */,
 				205F2EB222B634D200DEFB02 /* AppDelegate.swift in Sources */,
 				20695A3222B7DDD300D63948 /* ThoughtCell.swift in Sources */,
 				2099A5EC22E45B6B00617E51 /* UpdateThoughtVC.swift in Sources */,
@@ -304,6 +339,8 @@
 				206AD68322CB8A42007CC85F /* CreateUserVC.swift in Sources */,
 				20A3D96022BAA2EA003FE4EE /* Comment.swift in Sources */,
 				20A3D95C22BA9EA0003FE4EE /* CommentsVC.swift in Sources */,
+				20C9F41122EE097D007CF382 /* LoginVC.swift in Sources */,
+				206281E322FC829D005E9EF6 /* ForgetPassVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

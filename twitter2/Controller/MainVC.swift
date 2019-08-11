@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, ThoughtDelegate {
     
     //Outlets
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var usernameTxtField: UITextField!
     
     //Variables
     private var thoughtsArray = [Thought]()
@@ -37,6 +39,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Thou
                 self.present(loginVC, animated: true, completion: nil)
             } else {
                 self.setListener()
+                self.usernameTxtField.text = Auth.auth().currentUser?.displayName
             }
         })
     }
@@ -114,8 +117,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Thou
     }
     
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
+        SVProgressHUD.show(withStatus: "Logging Out")
         do {
             try Auth.auth().signOut()
+            SVProgressHUD.dismiss()
             print("Successfullt signed out")
         } catch {
             debugPrint("Error while signing out, \(error.localizedDescription)")

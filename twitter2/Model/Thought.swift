@@ -19,7 +19,9 @@ class Thought {
     private(set) var documentId: String!
     private(set) var userId: String!
     
-    init(username: String, timestamp: Date, thoughtTxt: String, numLikes: Int, numComments: Int, documentId: String, userId: String) {
+    let vc = AddThoughtVC()
+    
+    init(username: String, timestamp: Date, thoughtTxt: String, numLikes: Int, numComments: Int,  documentId: String, userId: String) {
         self.username = username
         self.timestamp = timestamp
         self.thoughtTxt = thoughtTxt

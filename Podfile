@@ -9,7 +9,9 @@ target 'twitter2' do
 pod 'Firebase/Core' 
 pod 'Firebase/Firestore'
 pod 'Firebase/Auth'
-pod 'Firebase/Storage'
-pod 'Firebase/Database'
-
+pod 'SVProgressHUD'
+pod 'GoogleSignIn'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit' 
 end
